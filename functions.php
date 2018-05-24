@@ -43,6 +43,7 @@ if ( ! function_exists( 'airspace_setup' ) ) :
 		add_theme_support( 'post-thumbnails' );
 
 		 set_post_thumbnail_size( 555, 253, true );
+		 add_image_size( 'single', 1098, 500, false );
 
 		 add_theme_support( 'post-formats', array(
 		 	'video',
@@ -55,7 +56,7 @@ if ( ! function_exists( 'airspace_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'airspace' ),
+			'primary' => esc_html__( 'Primary', 'airspace' ),
 		) );
 
 		/*
@@ -194,4 +195,9 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+/**
+ * customize primary nav menu with walker class.
+ */
+require get_template_directory() . '/inc/walker.php';
 

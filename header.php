@@ -3,32 +3,23 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> 
-<html class="no-js"> <!--<![endif]-->
+<html <?php language_attributes(); ?> class="no-js"> <!--<![endif]-->
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="description" content="Aviato E-Commerce Template">
   
   <meta name="author" content="Themefisher.com">
 
-  <title>Airspace | Creative Agency Bootstrap template</title>
 
   <!-- Mobile Specific Meta-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
-  <!-- bootstrap.min css -->
-  <!-- Ionic Icon Css -->
-  <!-- animate.css -->
-  <!-- Magnify Popup -->
-  <!-- Owl Carousel CSS -->
-  
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+
+ 
   <?php wp_head(); ?>
 
 </head>
 
-<body id="body">
+<body  id="body">
 
 <!-- Header Start -->
 <header class="navigation">
@@ -52,45 +43,21 @@
 						</div>
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav navbar-right">
-								<li><a href="index.html">Home</a></li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Portfolio <span class="ion-ios-arrow-down"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="portfolio.html">Portfolio Filter</a></li>
-										<li><a href="portfolio-single.html">Portfolio Single</a></li>
-									</ul>
-								</li>
-								<li><a href="service.html">Service</a></li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog <span class="ion-ios-arrow-down"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="blog-grid.html">Blog Grid</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-										<li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-										<li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-										<li><a href="blog-full-width.html">Blog Full Width</a></li>
-									</ul>
-								</li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="ion-ios-arrow-down"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="about.html">About Us</a></li>
-										<li><a href="coming-soon.html">Coming Soon</a></li>
-										<li><a href="404.html">404 Page</a></li>
-										<li><a href="faq.html">FAQ</a></li>
-										<li><a href="pricing.html">Pricing Table</a></li>
-									</ul>
-								</li>
-								<li><a href="contact.html">Contact</a></li>
-							</ul>
-							</div><!-- /.navbar-collapse -->
-							</div><!-- /.container-fluid -->
-						</nav>
-					</div>
-				</div>
+							<?php
+							 wp_nav_menu( array(
+							 	'theme_location'  => 'primary',
+							 	'container'       =>  false,
+							 	'menu_class'      => 'nav navbar-nav navbar-right',
+							 	'walker'          => new Airspace_walker_nav_primary(),
+							 ) );
+							?>
+						</div><!-- /.navbar-collapse -->
+					</div><!-- /.container-fluid -->
+				</nav>
 			</div>
-			</header><!-- header close -->
+		</div>
+	</div>
+</header><!-- header close -->
 
 <section class="page-title bg-2">
   <div class="container">
