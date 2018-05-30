@@ -44,6 +44,7 @@ if ( ! function_exists( 'airspace_setup' ) ) :
 
 		 set_post_thumbnail_size( 555, 253, true );
 		 add_image_size( 'single', 1098, 500, false );
+		
 
 		 add_theme_support( 'post-formats', array(
 		 	'video',
