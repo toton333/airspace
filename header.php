@@ -37,9 +37,19 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand" href="index.html">
-								<img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="Logo">
-							</a>
+							
+                            
+							<?php airspace_the_custom_logo(); ?>
+							
+							  <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+							  <?php
+							  $description = get_bloginfo( 'description', 'display' );
+
+							  if ( $description || is_customize_preview() ) :
+							  ?>
+							  	<p class="site-description"><?php echo $description; ?></p>
+							  <?php endif; ?>
+
 						</div>
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

@@ -65,6 +65,9 @@ if ( ! function_exists( 'airspace_header_style' ) ) :
 			.site-description {
 				color: #<?php echo esc_attr( $header_text_color ); ?>;
 			}
+			.navbar-header > a.custom-logo-link {
+			display: none;
+		    }
 		<?php endif; ?>
 		</style>
 		<?php

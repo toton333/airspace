@@ -44,6 +44,7 @@ if ( ! function_exists( 'airspace_setup' ) ) :
 
 		 set_post_thumbnail_size( 555, 253, true );
 		 add_image_size( 'single', 1098, 500, false );
+		 add_image_size( 'non-grid', 750, 341.5, false );
 		
 
 		 add_theme_support( 'post-formats', array(
@@ -92,6 +93,7 @@ if ( ! function_exists( 'airspace_setup' ) ) :
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
+
 	}
 endif;
 add_action( 'after_setup_theme', 'airspace_setup' );
@@ -201,4 +203,15 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * customize primary nav menu with walker class.
  */
 require get_template_directory() . '/inc/walker.php';
+
+//custom logo 
+function airspace_the_custom_logo() {
+	
+	if ( function_exists( 'the_custom_logo' ) ) {
+		the_custom_logo();
+	}
+
+}
+
+
 

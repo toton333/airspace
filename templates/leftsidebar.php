@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Right Sidebar
+ * Template Name: Left Sidebar
  */
 
  get_header(); ?>
@@ -8,7 +8,13 @@
 <div class="page-wrapper">
 	<div class="container">
 		<div class="row">
-			
+			<div class="col-md-4">
+			 <aside class="sidebar">
+				<?php get_sidebar(); ?>
+
+			  </aside>
+			</div>
+
 			<div class="col-md-8">
 
 				<?php 
@@ -37,13 +43,6 @@
 						endwhile;
 						?>
 		      </div>
-		      <div class="col-md-4">
-				 <aside class="sidebar">
-					<?php get_sidebar(); ?>
-
-				  </aside>
-				</div>
-
 
      </div>
      <div class="text-center">

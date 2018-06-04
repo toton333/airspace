@@ -18,7 +18,9 @@ $blog_class = $blog_layout == 'full' ? 'col-md-8 col-md-offset-2' : 'col-md-8';
                
 
                	 if($blog_layout == 'left' ){
+               	 	echo '<div class="col-md-4"><aside class="sidebar">';
                     get_sidebar( );
+                    echo '</div></aside>';
                    
                	 }
 
@@ -40,18 +42,7 @@ $blog_class = $blog_layout == 'full' ? 'col-md-8 col-md-offset-2' : 'col-md-8';
 					endwhile;
 					?>
 
-						<div class="text-center">
-							<?php
-							 the_posts_pagination(
-							 	array(
-							 		'type' => 'list',
-							 		'screen_reader_text' => ' ',
-							 		'prev_text' => __('Prev', 'airspace'),
-							 		'next_text' => __('Next', 'airspace')
-							 ));  
-							 ?>
 						
-				        </div>
 
 					<?php 
 
@@ -61,7 +52,9 @@ $blog_class = $blog_layout == 'full' ? 'col-md-8 col-md-offset-2' : 'col-md-8';
 
 	               	 if($blog_layout == 'right' ){
 
-	                    get_sidebar( );
+	                    echo '<div class="col-md-4"><aside class="sidebar">';
+                        get_sidebar();
+                        echo '</div></aside>';
 	               	 }
 
 			?>
@@ -69,6 +62,18 @@ $blog_class = $blog_layout == 'full' ? 'col-md-8 col-md-offset-2' : 'col-md-8';
 		
 								
           </div>
+          <div class="text-center">
+				<?php
+				 the_posts_pagination(
+				 	array(
+				 		'type' => 'list',
+				 		'screen_reader_text' => ' ',
+				 		'prev_text' => __('Prev', 'airspace'),
+				 		'next_text' => __('Next', 'airspace')
+				 ));  
+				 ?>
+			
+	        </div>
 	    <?php	
 	             else :
 
