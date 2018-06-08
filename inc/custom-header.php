@@ -19,7 +19,7 @@
 function airspace_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'airspace_custom_header_args', array(
 		'default-image'          => '',
-		'default-text-color'     => '000000',
+		'default-text-color'     => '655E7A',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
@@ -65,9 +65,8 @@ if ( ! function_exists( 'airspace_header_style' ) ) :
 			.site-description {
 				color: #<?php echo esc_attr( $header_text_color ); ?>;
 			}
-			.navbar-header > a.custom-logo-link {
-			display: none;
-		    }
+			
+		     
 		<?php endif; ?>
 		</style>
 		<?php

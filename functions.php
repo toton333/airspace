@@ -178,6 +178,11 @@ add_action( 'wp_enqueue_scripts', 'airspace_scripts' );
 require get_template_directory() . '/inc/custom-header.php';
 
 /**
+ * Implement the Custom link color.
+ */
+require get_template_directory() . '/inc/custom-link-color.php';
+
+/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';

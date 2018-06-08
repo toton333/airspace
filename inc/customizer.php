@@ -26,6 +26,39 @@ function airspace_customize_register( $wp_customize ) {
 		) );
 	}
 
+	/* Start of test customizer*/
+    
+	$wp_customize->add_setting(
+		'test_color', array(
+			'default'           => '#655E7A',
+			'transport'         => 'postMessage'
+			
+		)
+	);
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'test_color_control', array(
+	'label'      => __( 'Nav Menu Color', 'airspace' ),
+	'settings'   => 'test_color',
+	'section'    => 'colors'
+) ) );
+
+	$wp_customize->add_setting(
+		'test_hover_color', array(
+			'default'           => '#353240',
+			
+		)
+	);
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'test_hover_color_control', array(
+	'label'      => __( 'Nav Menu Hover Color', 'airspace' ),
+	'settings'   => 'test_hover_color',
+	'section'    => 'colors'
+) ) );
+
+
+	/* end of testcustomizer*/
+
+    /* Start of blog customizer*/
 	//1. Define new section for blog
 	     $wp_customize->add_section( 'blog_section_id', 
 	        array(
@@ -52,9 +85,12 @@ function airspace_customize_register( $wp_customize ) {
 	       'grid' => __( 'Grid', 'airspace' ),
 	       'left' => __( 'Left Sidebar', 'airspace' ),
 	       'right' => __( 'Right Sidebar', 'airspace' ),
-	       'full'    => __('Full Width(no sidebar', 'airspace')
+	       'full'    => __('Full Width(no sidebar)', 'airspace')
 	     ),
 	   ) );
+	   /* end of blog customizer*/
+
+
 
 
 

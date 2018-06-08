@@ -49,6 +49,7 @@
 							  ?>
 							  	<p class="site-description"><?php echo $description; ?></p>
 							  <?php endif; ?>
+							  
 
 						</div>
 						<!-- Collect the nav links, forms, and other content for toggling -->

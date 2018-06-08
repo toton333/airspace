@@ -20,6 +20,16 @@
 		} );
 	} );
 
+	//link color
+	wp.customize( 'test_color', function( value ) {
+		value.bind( function( newval ) {
+			$('.navigation .navbar .navbar-nav  li  a').css('color', newval );
+		} );
+	} );
+
+	
+
+
 	// Header text color.
 	wp.customize( 'header_textcolor', function( value ) {
 		value.bind( function( to ) {
@@ -36,7 +46,11 @@
 				$( '.site-title a, .site-description' ).css( {
 					'color': to
 				} );
+			
 			}
 		} );
 	} );
+
+	
+
 } )( jQuery );
