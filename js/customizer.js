@@ -51,6 +51,22 @@
 		} );
 	} );
 
+	//toggle switch
+	wp.customize( 'sample_toggle_switch', function( value ) {
+		value.bind( function( to ) {
+
+			if( to ){
+                $( '.switch-toggle' ).css('display', 'block');
+            }
+            else{
+                $( '.switch-toggle' ).css('display', 'none');
+            }
+			
+			
+		} );
+	} );
+	
+
 	
 
 } )( jQuery );

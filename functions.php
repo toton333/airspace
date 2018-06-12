@@ -178,9 +178,9 @@ add_action( 'wp_enqueue_scripts', 'airspace_scripts' );
 require get_template_directory() . '/inc/custom-header.php';
 
 /**
- * Implement the Custom link color.
+ * Implement the Custom css at wp_head.
  */
-require get_template_directory() . '/inc/custom-link-color.php';
+require get_template_directory() . '/inc/wp_head_css.php';
 
 /**
  * Custom template tags for this theme.
@@ -216,6 +216,71 @@ function airspace_the_custom_logo() {
 		the_custom_logo();
 	}
 
+}
+
+/**
+* Set our Customizer default options
+*/
+if ( ! function_exists( 'skyrocket_generate_defaults' ) ) {
+	function skyrocket_generate_defaults() {
+		$customizer_defaults = array(
+			'social_newtab' => 0,
+			'social_urls' => '',
+			'social_alignment' => 'alignright',
+			'social_rss' => 0,
+			'social_url_icons' => '',
+			'contact_phone' => '',
+			'search_menu_icon' => 0,
+			'woocommerce_shop_sidebar' => 1,
+			'woocommerce_product_sidebar' => 0,
+			'sample_toggle_switch' => 0,
+			'sample_slider_control' => 48,
+			'sample_sortable_repeater_control' => '',
+			'sample_image_radio_button' => 'sidebarright',
+			'sample_text_radio_button' => 'right',
+			'sample_image_checkbox' => 'stylebold,styleallcaps',
+			'sample_single_accordion' => '',
+			'sample_alpha_color' => 'rgba(209,0,55,0.7)',
+			'sample_simple_notice' => '',
+			'sample_dropdown_select2_control_single' => 'vic',
+			'sample_dropdown_select2_control_multi' => array (
+				'Antarctica/McMurdo',
+				'Australia/Melbourne',
+				'Australia/Broken_Hill',
+				),
+			'sample_dropdown_posts_control' => '',
+			'sample_tinymce_editor' => '',
+			'sample_google_font_select' => json_encode(
+				array(
+					'font' => 'Open Sans',
+					'regularweight' => 'regular',
+					'italicweight' => 'italic',
+					'boldweight' => '700',
+					'category' => 'sans-serif'
+				)
+			),
+			'sample_default_text' => '',
+			'sample_email_text' => '',
+			'sample_url_text' => '',
+			'sample_number_text' => '',
+			'sample_hidden_text' => '',
+			'sample_date_text' => '',
+			'sample_default_checkbox' => 0,
+			'sample_default_select' => 'jet-fuel',
+			'sample_default_radio' => 'spider-man',
+			'sample_default_dropdownpages' => '1548',
+			'sample_default_textarea' => '',
+			'sample_default_color' => '#333',
+			'sample_default_media' => '',
+			'sample_default_image' => '',
+			'sample_default_cropped_image' => '',
+			'sample_date_only' => '2017-08-28',
+			'sample_date_time' => '2017-08-28 16:30:00',
+			'sample_date_time_no_past_date' => date( 'Y-m-d' ),
+		);
+
+		return apply_filters( 'skyrocket_customizer_defaults', $customizer_defaults );
+	}
 }
 
 

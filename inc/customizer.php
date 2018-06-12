@@ -88,6 +88,22 @@ function airspace_customize_register( $wp_customize ) {
 	       'full'    => __('Full Width(no sidebar)', 'airspace')
 	     ),
 	   ) );
+       
+
+       //switch toggle
+	   $wp_customize->add_setting( 'sample_toggle_switch',
+	   	array(
+	   		'default' => 0,
+	   		'transport' => 'postMessage',
+	   		'sanitize_callback' => 'skyrocket_switch_sanitization'
+	   	)
+	   );
+	   $wp_customize->add_control( new Skyrocket_Toggle_Switch_Custom_control( $wp_customize, 'sample_toggle_switch',
+	   	array(
+	   		'label' => esc_html__( 'Toggle switch' ),
+	   		'section' => 'blog_section_id'
+	   	)
+	   ) );
 	   /* end of blog customizer*/
 
 
@@ -96,6 +112,23 @@ function airspace_customize_register( $wp_customize ) {
 
 }
 add_action( 'customize_register', 'airspace_customize_register' );
+
+/**
+ * Switch sanitization
+ *
+ * @param  string		Switch value
+ * @return integer	Sanitized value
+ */
+if ( ! function_exists( 'skyrocket_switch_sanitization' ) ) {
+	function skyrocket_switch_sanitization( $input ) {
+		if ( true === $input ) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+}
+
 
 
 //Sanitization for blog layout settings
@@ -136,5 +169,7 @@ function airspace_customize_preview_js() {
 	wp_enqueue_script( 'airspace-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'airspace_customize_preview_js' );
+
+require_once trailingslashit( dirname(__FILE__) ) . 'custom-controls.php';
 
 
