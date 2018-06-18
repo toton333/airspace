@@ -30,7 +30,7 @@ function airspace_customize_register( $wp_customize ) {
     
 	$wp_customize->add_setting(
 		'test_color', array(
-			'default'           => '#655E7A',
+			'default'           => '#5C5C5C',
 			'transport'         => 'postMessage'
 			
 		)
@@ -44,7 +44,7 @@ function airspace_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting(
 		'test_hover_color', array(
-			'default'           => '#353240',
+			'default'           => '#000',
 			
 		)
 	);
@@ -55,8 +55,62 @@ function airspace_customize_register( $wp_customize ) {
 	'section'    => 'colors'
 ) ) );
 
-
 	/* end of testcustomizer*/
+
+/* Start of header heading*/
+   $wp_customize->add_setting(
+    'header_heading', array(
+     'default'   => __('A DIGITAL MARKETING & DESIGN AGENCY', 'airspace'),
+     'transpost' => 'refresh'
+
+    )
+   );
+
+   $wp_customize->add_control('header_heading', array(
+
+   'type' => 'textarea',
+   'label' => __('Insert your header heading', 'airspace'),
+   'section' => 'header_image',
+   ));
+/* end of header heading*/
+
+/* Start of header subheading*/
+   $wp_customize->add_setting(
+    'header_subheading', array(
+     'default'   => __('We love the Web and the work we do.We work closely with our clients to deliver 
+the best possible solutions for their needs','airspace'),
+     'transpost' => 'refresh'
+
+    )
+   );
+
+   $wp_customize->add_control('header_subheading', array(
+
+   'type' => 'textarea',
+   'label' => __('Insert your header sub heading','airspace'),
+   'section' => 'header_image',
+   ));
+/* end of header subheading*/
+
+
+/* Start of button text*/
+   $wp_customize->add_setting(
+    'header_button_text', array(
+     'default'   => __('FREE BOOTSTRAP TEMPLATES','airspace'),
+     'transpost' => 'refresh'
+
+    )
+   );
+
+   $wp_customize->add_control('header_button_text', array(
+
+   'type' => 'textarea',
+   'label' => __('Insert your button text','airspace'),
+   'section' => 'header_image',
+   ));
+/* end of button text*/
+
+
 
     /* Start of blog customizer*/
 	//1. Define new section for blog
@@ -105,6 +159,74 @@ function airspace_customize_register( $wp_customize ) {
 	   	)
 	   ) );
 	   /* end of blog customizer*/
+
+	/* start of Frontpage content*/
+    
+    //frontpage panel
+	$wp_customize->add_panel( 'frontpage_panel',
+	   array(
+	      'title' => __( 'Frontpage Content', 'airspace' ),
+	      'description' => esc_html__( 'Insert your content at different areas of frontpage.' ),
+	   )
+	);
+    
+    //frontpage section 1 
+	$wp_customize->add_section( 'frontpage_section1',
+	   array(
+	      'title' => __( 'About Us', 'airspace' ),
+	      'description' => esc_html__( 'Insert content about your organisation', 'airspace' ),
+	      'panel' => 'frontpage_panel', // Only needed if adding your Section to a Panel
+	   )
+	);
+
+   //about title setting
+	$wp_customize->add_setting( 'about_title',
+	   array(
+	      'default' => 'ABOUT US', 
+	      'transport' => 'refresh',
+	   )
+	);
+    
+    //about title text field
+	$wp_customize->add_control( 'about_title',
+	   array(
+	      'label' => __( 'Title', 'airspace' ),
+	      'description' => esc_html__( 'Insert a title', 'airspace' ),
+	      'section' => 'frontpage_section1',
+	      'type' => 'text', 
+	      'capability' => 'edit_theme_options', // Optional. Default: 'edit_theme_options'
+	      'input_attrs' => array( 
+	         'class' => 'my-custom-class',
+	         'style' => 'border: 1px solid rebeccapurple',
+	         'placeholder' => __( 'Enter Title...' ),
+	      ),
+	   )
+	);
+
+
+    //about content setting
+	$wp_customize->add_setting( 'about_content',
+	   array(
+	      'default' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id', 
+	      'transport' => 'refresh',
+	      'sanitize_callback' => 'wp_kses_post'
+	   )
+	);
+    
+
+    //about content tinymce
+	$wp_customize->add_control( new Skyrocket_TinyMCE_Custom_control( $wp_customize, 'about_content',
+		array(
+			'label' => __( 'Body', 'airspace' ),
+			'description' => __( 'Enter your content here', 'airspace' ),
+			'section' => 'frontpage_section1',
+			
+		)
+	) );
+
+	/* end of Frontpage content*/
+
+
 
 
 

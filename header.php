@@ -77,15 +77,33 @@
 	</div>
 </header><!-- header close -->
 
+<?php if(is_front_page()) : ?>
+<!-- Slider Start -->
+<section class="slider" >
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="block">
+					<h1 class="animated fadeInUp"><?php echo get_theme_mod('header_heading'); ?></h1>
+					<p class="animated fadeInUp"><?php echo get_theme_mod('header_subheading'); ?></p>
+					<a href="#" target="_blank" class="btn btn-main animated fadeInUp" ><?php echo get_theme_mod('header_button_text'); ?></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<?php else: ?>
 <section class="page-title bg-2">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="block">
-          <h1>Blog</h1>
+          <h1><?php the_title(); ?></h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, quibusdam.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+<?php endif; ?>
