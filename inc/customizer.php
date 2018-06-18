@@ -215,7 +215,7 @@ the best possible solutions for their needs','airspace'),
     
 
     //about content tinymce
-	$wp_customize->add_control( new Skyrocket_TinyMCE_Custom_control( $wp_customize, 'about_content',
+	$wp_customize->add_control( new WP_Customize_Teeny_Control( $wp_customize, 'about_content',
 		array(
 			'label' => __( 'Body', 'airspace' ),
 			'description' => __( 'Enter your content here', 'airspace' ),

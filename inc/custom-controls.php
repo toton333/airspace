@@ -496,50 +496,58 @@ if(class_exists('WP_Customize_Control')){
 		}
 	}
 
-	/**
-	 * TinyMCE Custom Control
-	 *
-	 * @since Ephemeris 1.0
-	 *
-	 * @author Anthony Hortin <http://maddisondesigns.com>
-	 * @license http://www.gnu.org/licenses/gpl-2.0.html
-	 * @link https://github.com/maddisondesigns
-	 */
-	class Skyrocket_TinyMCE_Custom_control extends WP_Customize_Control {
-		/**
-		 * The type of control being rendered
-		 */
-		public $type = 'tinymce_editor';
-		/**
-		 * Enqueue our scripts and styles
-		 */
-		public function enqueue(){
-			wp_enqueue_script( 'skyrocket_custom_controls_js', trailingslashit( get_template_directory_uri() ) . 'js/customizer.js', array( 'jquery' ), '1.0', true );
-			wp_enqueue_style( 'skyrocket_custom_controls_css', trailingslashit( get_template_directory_uri() ) . 'css/customizer.css', array(), '1.0', 'all' );
-			wp_enqueue_editor();
-		}
-		/**
-		 * Pass our TinyMCE toolbar string to JavaScript
-		 */
-		public function to_json() {
-			parent::to_json();
-			$this->json['skyrockettinymcetoolbar1'] = isset( $this->input_attrs['toolbar1'] ) ? esc_attr( $this->input_attrs['toolbar1'] ) : 'bold italic bullist numlist alignleft aligncenter alignright link';
-			$this->json['skyrockettinymcetoolbar2'] = isset( $this->input_attrs['toolbar2'] ) ? esc_attr( $this->input_attrs['toolbar2'] ) : '';
-		}
-		/**
-		 * Render the control in the customizer
-		 */
-		public function render_content(){
-		?>
-			<div class="tinymce-control">
-				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-				<?php if( !empty( $this->description ) ) { ?>
-					<span class="customize-control-description"><?php echo esc_html( $this->description ); ?></span>
-				<?php } ?>
-				<textarea id="<?php echo esc_attr( $this->id ); ?>" class="customize-control-tinymce-editor" <?php $this->link(); ?>><?php echo esc_attr( $this->value() ); ?></textarea>
-			</div>
-		<?php
-		}
+	//TinyMce
+
+	class WP_Customize_Teeny_Control extends WP_Customize_Control {
+	  function __construct($manager, $id, $options) {
+	    parent::__construct($manager, $id, $options);
+
+	    global $num_customizer_teenies_initiated;
+	    $num_customizer_teenies_initiated = empty($num_customizer_teenies_initiated)
+	      ? 1
+	      : $num_customizer_teenies_initiated + 1;
+	  }
+	  function render_content() {
+	    global $num_customizer_teenies_initiated, $num_customizer_teenies_rendered;
+	    $num_customizer_teenies_rendered = empty($num_customizer_teenies_rendered)
+	      ? 1
+	      : $num_customizer_teenies_rendered + 1;
+
+	    $value = $this->value();
+	    ?>
+	      <label>
+	        <span class="customize-text_editor"><?php echo esc_html($this->label); ?></span>
+	        <input id="<?php echo $this->id ?>-link" class="wp-editor-area" type="hidden" <?php $this->link(); ?> value="<?php echo esc_textarea($value); ?>">
+	        <?php
+	          wp_editor($value, $this->id, [
+	            'textarea_name' => $this->id,
+	            'media_buttons' => false,
+	            'drag_drop_upload' => false,
+	            'teeny' => true,
+	            'quicktags' => false,
+	            'textarea_rows' => 10,
+	            // MAKE SURE TINYMCE CHANGES ARE LINKED TO CUSTOMIZER
+	            'tinymce' => [
+	              'setup' => "function (editor) {
+	                var cb = function () {
+	                  var linkInput = document.getElementById('$this->id-link')
+	                  linkInput.value = editor.getContent()
+	                  linkInput.dispatchEvent(new Event('change'))
+	                }
+	                editor.on('Change', cb)
+	                editor.on('Undo', cb)
+	                editor.on('Redo', cb)
+	                editor.on('KeyUp', cb) // Remove this if it seems like an overkill
+	              }"
+	            ]
+	          ]);
+	        ?>
+	      </label>
+	    <?php
+	    // PRINT THEM ADMIN SCRIPTS AFTER LAST EDITOR
+	    if ($num_customizer_teenies_rendered == $num_customizer_teenies_initiated)
+	      do_action('admin_print_footer_scripts');
+	  }
 	}
 
 	/**
