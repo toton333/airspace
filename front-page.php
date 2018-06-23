@@ -27,9 +27,9 @@ Template Name: Front page Template
 <section class="feature bg-2">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-6">
+      <div id="ideas" class="col-md-6 col-md-offset-6">
         <h2 class="section-subtitle"><?php echo get_theme_mod('ideas_title'); ?></h2>
-        <p><?php echo get_theme_mod('ideas_content'); ?></p>
+        <div id="ideas_content"><?php echo get_theme_mod('ideas_content'); ?></div>
         <a href="<?php echo get_theme_mod('ideas_url') ?>" class="btn btn-view-works"><?php echo get_theme_mod('ideas_button_text');  ?></a>
       </div>
     </div>

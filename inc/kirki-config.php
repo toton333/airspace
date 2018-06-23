@@ -106,5 +106,79 @@ Kirki::add_field( 'airspace_kirki_config_id', array(
 
 
 /* Start of frontpage_section2 */
+Kirki::add_section( 'frontpage_section2', array(
+    'title'          => esc_attr__( 'Ideas', 'airspace' ),
+    'description'    => esc_attr__( 'Insert content about your ideas', 'airspace' ),
+    'panel'          => 'frontpage_panel',
+) );
+
+Kirki::add_field( 'airspace_kirki_config_id', array(
+	'type'     => 'text',
+	'settings' => 'ideas_title',
+	'label'    => __( 'Title', 'airspace' ),
+	'description' => esc_html__( 'Insert a title', 'airspace' ),
+	'section'  => 'frontpage_section2',
+	'default'  => esc_attr__( 'WE BELIEVE IN GREAT IDEAS', 'airspace' ),
+	'partial_refresh' => array(
+       'ideas_title' => array(
+             'selector' => '#ideas h2',
+             'render_callback' => function(){
+
+             	return get_theme_mod('ideas_title');
+             }
+       )
+	),
+	
+) );
+
+Kirki::add_field( 'airspace_kirki_config_id', array(
+	'type'     => 'editor',
+	'settings' => 'ideas_content',
+	'label'    => __( 'Body', 'airspace' ),
+	'description' => __( 'Enter your content here', 'airspace' ),
+	'section'  => 'frontpage_section2',
+	'default'  => esc_attr__( 'Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+
+			Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+
+			Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.', 'airspace' ),
+	'partial_refresh' => array(
+       'about_content' => array(
+             'selector' => 'div#ideas_content',
+             'render_callback' => function(){
+
+             	return get_theme_mod('ideas_content');
+             }
+       )
+	),
+	
+) );
+
+Kirki::add_field( 'airspace_kirki_config_id', array(
+	'type'        => 'background',
+	'settings'    => 'ideas_image',
+	'label'       => esc_attr__( 'Background Image' , 'airspace'),
+	'description' => esc_attr__( 'Upload your preferred image for background', 'airspace' ),
+	'section'     => 'frontpage_section2',
+	'transport'   => 'auto',	
+	'default'	 => array(
+		'background-color'		 => 'rgba(20,20,20,.8)',
+		'background-image'		 => '',
+		'background-repeat'		 => 'no-repeat',
+		'background-position'	 => 'center center',
+		'background-size'		 => 'cover',
+		'background-attachment'	 => 'fixed',
+	),	
+	'output'     => array(
+          array(
+            'element' => '.bg-2',
+
+          )
+
+	)
+) );
+
+
+
 
 /* End of frontpage_section2 */

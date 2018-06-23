@@ -31,13 +31,14 @@ function airspace_custom_css(){
 		  padding: 200px 0 280px 0;
 		  position: relative;
 		}
-
+        
+        /*
 		.bg-2{
-           background: url("<?php echo wp_get_attachment_url( $bg_post_id ) ?>");
+           background: url("<?php //echo wp_get_attachment_url( $bg_post_id ) ?>");
            background-size: cover;
            background-attachment: fixed;
 		}
-
+       */
 	</style>
 
 <?php
