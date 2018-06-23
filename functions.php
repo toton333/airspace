@@ -199,6 +199,21 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/template-functions.php';
 
 /**
+ * Custom kirki controls.
+ */
+//require get_template_directory() . '/inc/custom-kirki-controls.php';
+
+/**
+ * Kirki configuration.
+ */
+require get_template_directory() . '/inc/kirki-config.php';
+
+/**
+ * Customizer repeater field( must include its functions.php before including customizer.php).
+ */
+require get_template_directory() . '/customizer-repeater/functions.php';
+
+/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';

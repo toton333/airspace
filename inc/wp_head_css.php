@@ -4,6 +4,7 @@ function airspace_custom_css(){
   $test_hover_color        =  get_theme_mod('test_hover_color');
   $sample_toggle_switch    = get_theme_mod('sample_toggle_switch');
   $header_image_url        = get_header_image();
+  $bg_post_id               = get_theme_mod('ideas_image');
 
 	?>
 
@@ -29,6 +30,12 @@ function airspace_custom_css(){
 		  background-position: 10% 0%;
 		  padding: 200px 0 280px 0;
 		  position: relative;
+		}
+
+		.bg-2{
+           background: url("<?php echo wp_get_attachment_url( $bg_post_id ) ?>");
+           background-size: cover;
+           background-attachment: fixed;
 		}
 
 	</style>

@@ -2113,9 +2113,11 @@ font header .navbar-default .navbar-nav li a:hover {
 }
 
 .bg-2 {
-  background: url("../images/featue-bg.jpg");
+
+  /* background: url("../images/featue-bg.jpg");
   background-size: cover;
   background-attachment: fixed;
+   */
 }
 
 .widget {
@@ -2744,4 +2746,8 @@ font header .navbar-default .navbar-nav li a:hover {
   font-weight: 600;
 }
 
+/* preventing broken img tag display */
+img[src=""] {
+    display: none;
+}
 /*# sourceMappingURL=maps/style.css.map */

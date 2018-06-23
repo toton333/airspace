@@ -9,15 +9,16 @@ Template Name: Front page Template
 		<div class="row">
 			<div class="col-md-7 col-sm-12">
 				<div class="block">
-					<div class="section-title">
+					<div id="about_title" class="section-title">
 						<h2><?php echo get_theme_mod('about_title'); ?></h2>
 					</div>
-					<p><?php echo get_theme_mod('about_content'); ?></p>
+					<p id="about_content"><?php echo get_theme_mod('about_content'); ?></p>
 				</div>
 			</div><!-- .col-md-7 close -->
 			<div class="col-md-5 col-sm-12">
-				<div class="block">
-					<img src="<?php echo get_template_directory_uri(); ?>/images/wrapper-img.png" alt="Img">
+				<div class="block about_image">
+					<img id="about_image"  src="<?php echo esc_url( get_theme_mod('about_image') );  ?>" alt="Img">
+        
 				</div>
 			</div><!-- .col-md-5 close -->
 		</div>
@@ -27,11 +28,9 @@ Template Name: Front page Template
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-6">
-        <h2 class="section-subtitle">WE BELIEVE IN GREAT IDEAS</h2>
-        <p>Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p>Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p>Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <a href="#" class="btn btn-view-works">View Works</a>
+        <h2 class="section-subtitle"><?php echo get_theme_mod('ideas_title'); ?></h2>
+        <p><?php echo get_theme_mod('ideas_content'); ?></p>
+        <a href="<?php echo get_theme_mod('ideas_url') ?>" class="btn btn-view-works"><?php echo get_theme_mod('ideas_button_text');  ?></a>
       </div>
     </div>
   </div>
@@ -42,67 +41,27 @@ Template Name: Front page Template
   <div class="container">
     <div class="row">
       <div class="section-title">
-        <h2>Our Services</h2>
-        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, <br> there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
+        <h2><?php echo get_theme_mod('services_title'); ?></h2>
+    
+        <p><?php echo get_theme_mod('services_subheading'); ?></p>
       </div>
     </div>
     <div class="row ">
+
+      <?php
+         $services_repeater = get_theme_mod('services_repeater');
+         /*This returns a json so we have to decode it*/
+         $services_repeater_decoded = json_decode($services_repeater);
+         foreach($services_repeater_decoded as $repeater_item) :
+      ?>
       <div class="col-sm-6 col-md-3">
         <div class="service-item">
-          <i class="icon ion-coffee"></i>
-          <h4>Branding</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
+          <?php echo $repeater_item->icon_value; ?>
+          <h4><?php echo $repeater_item->title; ?></h4>
+          <p><?php echo $repeater_item->text; ?></p>
         </div>
       </div>
-      <div class="col-sm-6 col-md-3">
-        <div class="service-item">
-          <i class="ion-compass"></i>
-          <h4>Web Design</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <div class="service-item">
-          <i class="ion-image"></i>
-          <h4>App Design</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <div class="service-item">
-          <i class="ion-bug"></i>
-          <h4>Start Up</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <div class="service-item">
-          <i class="ion-headphone"></i>
-          <h4>Logo Design</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <div class="service-item">
-          <i class="ion-leaf"></i>
-          <h4>Development</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <div class="service-item">
-          <i class="ion-planet"></i>
-          <h4>Brand Identity</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <div class="service-item">
-          <i class="ion-earth"></i>
-          <h4>Brand Identity</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
-        </div>
-      </div>
+      <?php endforeach; ?>
     </div>
   </div>
 </section>

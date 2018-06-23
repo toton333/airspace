@@ -71,3 +71,13 @@ function airspace_get_embedded_media( $type = array() ){
 	return $output;
 }
 
+//wp customize cropped image control output 
+
+function get_cropped_image_url($setting_id) {
+    if ( get_theme_mod( $setting_id ) > 0 ) {
+        return wp_get_attachment_url( get_theme_mod( $setting_id) );
+    } 
+}
+
+
+

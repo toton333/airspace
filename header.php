@@ -86,7 +86,7 @@
 				<div class="block">
 					<h1 class="animated fadeInUp"><?php echo get_theme_mod('header_heading'); ?></h1>
 					<p class="animated fadeInUp"><?php echo get_theme_mod('header_subheading'); ?></p>
-					<a href="#" target="_blank" class="btn btn-main animated fadeInUp" ><?php echo get_theme_mod('header_button_text'); ?></a>
+					<a href="<?php echo get_theme_mod('header_button_url'); ?>" target="_blank" class="btn btn-main animated fadeInUp" ><?php echo get_theme_mod('header_button_text'); ?></a>
 				</div>
 			</div>
 		</div>
