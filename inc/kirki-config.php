@@ -47,7 +47,7 @@ Kirki::add_field( 'airspace_kirki_config_id', array(
 	'default'  => esc_attr__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id', 'airspace' ),
 	'partial_refresh' => array(
        'about_content' => array(
-             'selector' => 'p#about_content',
+             'selector' => 'div#about_content',
              'render_callback' => function(){
 
              	return get_theme_mod('about_content');
@@ -143,7 +143,7 @@ Kirki::add_field( 'airspace_kirki_config_id', array(
 
 			Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.', 'airspace' ),
 	'partial_refresh' => array(
-       'about_content' => array(
+       'ideas_content' => array(
              'selector' => 'div#ideas_content',
              'render_callback' => function(){
 
@@ -176,6 +176,43 @@ Kirki::add_field( 'airspace_kirki_config_id', array(
           )
 
 	)
+) );
+
+Kirki::add_field( 'airspace_kirki_config_id', array(
+	'type'     => 'text',
+	'settings' => 'ideas_button_text',
+	'label'    => __( 'Button text', 'airspace' ),
+	'description' => esc_html__( 'Insert button text', 'airspace' ),
+	'section'  => 'frontpage_section2',
+	'default' => esc_html__('View Works', 'airspace'),
+	'partial_refresh' => array(
+       'ideas_button_text' => array(
+             'selector' => '#ideas_link a',
+             'render_callback' => function(){
+
+             	 echo get_theme_mod('ideas_button_text');
+             }
+       )
+	),
+	
+) );
+
+Kirki::add_field( 'airspace_kirki_config_id', array(
+	'type'     => 'link',
+	'settings' => 'ideas_url',
+	'label'    => __( 'Button URL', 'airspace' ),
+	'description' => esc_html__( 'Insert a link to the buttom', 'airspace' ),
+	'section'  => 'frontpage_section2',
+	'default' => esc_url( 'http://localhost/airspace/service/', 'airspace') , 
+	'transport'   => 'postMessage',
+	 'js_vars'     => array(
+        array(
+            'element'  => '#ideas_link a',
+            'function' => 'text',
+            'attr'     => 'href',
+        ),
+    )
+	
 ) );
 
 

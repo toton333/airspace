@@ -12,7 +12,7 @@ Template Name: Front page Template
 					<div id="about_title" class="section-title">
 						<h2><?php echo get_theme_mod('about_title'); ?></h2>
 					</div>
-					<p id="about_content"><?php echo get_theme_mod('about_content'); ?></p>
+					<div id="about_content"><?php echo get_theme_mod('about_content'); ?></div>
 				</div>
 			</div><!-- .col-md-7 close -->
 			<div class="col-md-5 col-sm-12">
@@ -30,7 +30,7 @@ Template Name: Front page Template
       <div id="ideas" class="col-md-6 col-md-offset-6">
         <h2 class="section-subtitle"><?php echo get_theme_mod('ideas_title'); ?></h2>
         <div id="ideas_content"><?php echo get_theme_mod('ideas_content'); ?></div>
-        <a href="<?php echo get_theme_mod('ideas_url') ?>" class="btn btn-view-works"><?php echo get_theme_mod('ideas_button_text');  ?></a>
+        <span id="ideas_link"><a href="<?php echo get_theme_mod('ideas_url') ?>" class="btn btn-view-works"><?php echo get_theme_mod('ideas_button_text');  ?></a></span>
       </div>
     </div>
   </div>
