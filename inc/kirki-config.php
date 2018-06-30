@@ -215,7 +215,61 @@ Kirki::add_field( 'airspace_kirki_config_id', array(
 	
 ) );
 
-
-
-
 /* End of frontpage_section2 */
+
+/* Start of frontpage_section3 */
+Kirki::add_section( 'frontpage_section3', array(
+    'title'          => esc_attr__( 'Services', 'airspace' ),
+    'description'    => esc_attr__( 'Describe your various services', 'airspace' ),
+    'panel'          => 'frontpage_panel',
+) );
+
+Kirki::add_field( 'airspace_kirki_config_id', array(
+	'type'        => 'custom',
+	'settings'    => 'services_title_collapse',
+	'label'       => __( 'This is the label', 'airspace' ),
+	'section'     => 'frontpage_section3',
+	'default'     => '<button class="airspacecollapsible">' . esc_html__( 'Open Collapsible', 'airspace' ) . '</button>',
+) );
+
+Kirki::add_field( 'airspace_kirki_config_id', array(
+	'type'     => 'text',
+	'settings' => 'services_title',
+	'label'    => __( 'Title', 'airspace' ),
+	'description' => esc_html__( 'Insert a title', 'airspace' ),
+	'section'  => 'frontpage_section3',
+	'default' => esc_html__('OUR SERVICES', 'airspace'),
+	
+	'partial_refresh' => array(
+       'services_title' => array(
+             'selector' => '#services_title',
+             'render_callback' => function(){
+
+             	 echo get_theme_mod('services_title');
+             }
+       )
+	),
+	
+) );
+
+
+Kirki::add_field( 'airspace_kirki_config_id', array(
+	'type'     => 'editor',
+	'settings' => 'services_subheading',
+	'label'    => __( 'Description', 'airspace' ),
+	'description' => __( 'Insert a description of this section', 'airspace' ),
+	'section'  => 'frontpage_section3',
+	'default'  => esc_attr__( 'We love the Web and the work we do.We work closely with our clients to deliver the best possible solutions for their needs', 'airspace' ),
+	'partial_refresh' => array(
+       'services_subheading' => array(
+             'selector' => '#services_subheading',
+             'render_callback' => function(){
+
+             	return get_theme_mod('services_subheading');
+             },
+       )
+	),
+	
+) );
+
+/* End of frontpage_section3 */

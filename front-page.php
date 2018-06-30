@@ -41,9 +41,9 @@ Template Name: Front page Template
   <div class="container">
     <div class="row">
       <div class="section-title">
-        <h2><?php echo get_theme_mod('services_title'); ?></h2>
+        <h2 id="services_title"><?php echo get_theme_mod('services_title'); ?></h2>
     
-        <p><?php echo get_theme_mod('services_subheading'); ?></p>
+        <div id="services_subheading"><?php echo get_theme_mod('services_subheading'); ?></div>
       </div>
     </div>
     <div class="row ">

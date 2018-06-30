@@ -138,7 +138,7 @@ function airspace_widgets_init() {
 add_action( 'widgets_init', 'airspace_widgets_init' );
 
 /**
- * Enqueue scripts and styles.
+ * Frontend Enqueue scripts and styles.
  */
 function airspace_scripts() {
 
@@ -177,6 +177,16 @@ function airspace_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'airspace_scripts' );
+
+
+/**
+ * Backend Enqueue scripts and styles.
+ */
+function admin_airspace_scripts(){
+	wp_enqueue_style( 'airspace-admin-css', get_template_directory_uri() .'/css/airspace-admin.css');
+	wp_enqueue_script( 'airspace-admin-js', get_template_directory_uri() . '/js/airspace-admin.js', array('jquery'), null, true );
+}
+add_action( 'admin_enqueue_scripts', 'admin_airspace_scripts' );
 
 /**
  * Implement the Custom Header feature.
