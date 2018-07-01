@@ -2751,5 +2751,13 @@ img[src=""] {
     display: none;
 }
 
+/* bug fix for customizer pen icon css problem with text align center */
+div#services_subheading p{
+
+  display:inline-block;
+  max-width: 670px;
+  max-height: 100px
+}
+
 
 /*# sourceMappingURL=maps/style.css.map */

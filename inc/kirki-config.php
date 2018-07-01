@@ -155,10 +155,19 @@ Kirki::add_field( 'airspace_kirki_config_id', array(
 ) );
 
 Kirki::add_field( 'airspace_kirki_config_id', array(
+	'type'        => 'custom',
+	'settings'    => 'ideas_background_collapse',
+	'label'       => __( '', 'airspace' ),
+	'section'     => 'frontpage_section2',
+	'default'     => '<button class="airspacecollapsible">' . esc_html__( 'Background', 'airspace' ) . '</button>',
+
+	'description' => esc_attr__( 'Set your Background for this block', 'airspace' ),
+) );
+
+Kirki::add_field( 'airspace_kirki_config_id', array(
 	'type'        => 'background',
 	'settings'    => 'ideas_image',
-	'label'       => esc_attr__( 'Background Image' , 'airspace'),
-	'description' => esc_attr__( 'Upload your preferred image for background', 'airspace' ),
+	'label'       => esc_attr__( '' , 'airspace'),
 	'section'     => 'frontpage_section2',
 	'transport'   => 'auto',	
 	'default'	 => array(
@@ -224,13 +233,7 @@ Kirki::add_section( 'frontpage_section3', array(
     'panel'          => 'frontpage_panel',
 ) );
 
-Kirki::add_field( 'airspace_kirki_config_id', array(
-	'type'        => 'custom',
-	'settings'    => 'services_title_collapse',
-	'label'       => __( 'This is the label', 'airspace' ),
-	'section'     => 'frontpage_section3',
-	'default'     => '<button class="airspacecollapsible">' . esc_html__( 'Open Collapsible', 'airspace' ) . '</button>',
-) );
+
 
 Kirki::add_field( 'airspace_kirki_config_id', array(
 	'type'     => 'text',
