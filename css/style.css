@@ -2112,13 +2112,15 @@ font header .navbar-default .navbar-nav li a:hover {
   background-attachment: fixed;
 }
 
+/*
 .bg-2 {
 
-  /* background: url("../images/featue-bg.jpg");
+  background: url("../images/featue-bg.jpg");
   background-size: cover;
   background-attachment: fixed;
-   */
+   
 }
+*/
 
 .widget {
   margin-bottom: 30px;

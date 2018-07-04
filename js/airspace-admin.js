@@ -1,5 +1,5 @@
 jQuery( document ).ready(function($) {
-	$('#customize-control-ideas_image').hide();
+	$('#customize-control-ideas_background').hide();
 	$('.airspacecollapsible').click(function(e){
 		e.preventDefault();
        //this.classList.toggle("servicesactive");

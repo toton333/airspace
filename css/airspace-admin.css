@@ -7,10 +7,8 @@ img[src=""] {
 
 /* start of collapsible */
 .airspacecollapsible {
-    background-color: #867c9c;
-    color: white;
     cursor: pointer;
-    padding: 18px;
+    padding: 15px;
     width: 100%;
     border: none;
     text-align: left;
@@ -20,12 +18,12 @@ img[src=""] {
 
 .airspaceactive, .airspacecollapsible:hover {
     background-color: #655E7A;
+    color:white;
 }
 
 .airspacecollapsible:after {
     font: 400 20px/1 dashicons;
     content: "\f345";
-    color: white;
     float: right;
     margin-left: 5px;
     transition: all 0.5s;

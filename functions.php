@@ -221,7 +221,7 @@ require get_template_directory() . '/inc/kirki-config.php';
 /**
  * Customizer repeater field( must include its functions.php before including customizer.php).
  */
-require get_template_directory() . '/customizer-repeater/functions.php';
+//require get_template_directory() . '/customizer-repeater/functions.php';
 
 /**
  * Customizer additions.

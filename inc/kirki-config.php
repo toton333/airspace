@@ -164,14 +164,15 @@ Kirki::add_field( 'airspace_kirki_config_id', array(
 	'description' => esc_attr__( 'Set your Background for this block', 'airspace' ),
 ) );
 
+
 Kirki::add_field( 'airspace_kirki_config_id', array(
 	'type'        => 'background',
-	'settings'    => 'ideas_image',
+	'settings'    => 'ideas_background',
 	'label'       => esc_attr__( '' , 'airspace'),
 	'section'     => 'frontpage_section2',
 	'transport'   => 'auto',	
 	'default'	 => array(
-		'background-color'		 => 'rgba(20,20,20,.8)',
+		'background-color'		 => '',
 		'background-image'		 => '',
 		'background-repeat'		 => 'no-repeat',
 		'background-position'	 => 'center center',
@@ -181,11 +182,15 @@ Kirki::add_field( 'airspace_kirki_config_id', array(
 	'output'     => array(
           array(
             'element' => '.bg-2',
+            'property' => 'background'
 
           )
 
 	)
 ) );
+
+
+
 
 Kirki::add_field( 'airspace_kirki_config_id', array(
 	'type'     => 'text',
@@ -275,4 +280,82 @@ Kirki::add_field( 'airspace_kirki_config_id', array(
 	
 ) );
 
+
+
+Kirki::add_field( 'airspace_kirki_config_id', array(
+	'type'        => 'repeater',
+	'label'       => esc_attr__( 'Services Blocks', 'airspace' ),
+	'section'     => 'frontpage_section3',
+	'row_label' => array(
+		'type'  => 'field',
+		'value' => esc_attr__('Block', 'airspace' ),
+		'field' => 'icon_value',
+	),
+	'button_label' => esc_attr__('Add New Block', 'airspace' ),
+	'settings'     => 'services_blocks',
+	'default'      => array(
+		array(
+			'icon_value' => esc_attr__( 'coffee', 'airspace' ),
+			'title'  => esc_attr__( 'BRANDING', 'airspace' ),
+			'text'   => esc_html__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt', 'airspace' )
+		),
+		array(
+			'icon_value' => esc_attr__( 'compass', 'airspace' ),
+			'title'  => esc_attr__( 'WEB DESIGN', 'airspace' ),
+			'text'   => esc_html__( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt', 'airspace' )
+		),
+	),
+	'fields' => array(
+		'icon_value' => array(
+			'type'        => 'text',
+			'label'       => esc_attr__( 'Icon Value', 'airspace' ),
+			'description' => esc_attr__( 'Insert icon name for this block', 'airspace' ),
+			'default'     => ''
+		),
+		'title' => array(
+			'type'        => 'text',
+			'label'       => esc_attr__( 'Title', 'airspace' ),
+			'description' => esc_attr__( 'Insert a title for this block', 'airspace' ),
+			'default'     => '',
+		),
+		'text' => array(
+			'type'        => 'textarea',
+			'label'       => esc_attr__( 'Description', 'airspace' ),
+			'description' => esc_attr__( 'Describe briefly about this block', 'airspace' ),
+			'default'     => '',
+		),
+	)
+) );
+
+
+
 /* End of frontpage_section3 */
+
+/* start of frontpage_section4 */
+
+Kirki::add_section( 'frontpage_section4', array(
+    'title'          => esc_attr__( 'Order and Visibility', 'airspace' ),
+    'description'    => esc_attr__( 'Rearrange the display order of the sections', 'airspace' ),
+    'panel'          => 'frontpage_panel',
+) );
+
+Kirki::add_field( 'airspace_kirki_config_id', array(
+	'type'        => 'sortable',
+	'settings'    => 'sortable_blocks',
+	'label'       => __( 'Order of display and visibility', 'airspace' ),
+	'section'     => 'frontpage_section4',
+	'default'     => array(
+		'aboutus',
+		'ideas',
+		'services'
+	),
+	'choices'     => array(
+		'aboutus' => esc_attr__( 'About Us', 'airspace' ),
+		'ideas' => esc_attr__( 'Ideas', 'airspace' ),
+		'services' => esc_attr__( 'Services', 'airspace' ),
+	),
+) );
+
+
+
+/* End of frontpage_section4 */

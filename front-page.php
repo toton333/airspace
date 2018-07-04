@@ -4,67 +4,19 @@ Template Name: Front page Template
 */
  get_header(); 
  ?>
-<section class="about section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-7 col-sm-12">
-				<div class="block">
-					<div id="about_title" class="section-title">
-						<h2><?php echo get_theme_mod('about_title'); ?></h2>
-					</div>
-					<div id="about_content"><?php echo get_theme_mod('about_content'); ?></div>
-				</div>
-			</div><!-- .col-md-7 close -->
-			<div class="col-md-5 col-sm-12">
-				<div class="block about_image">
-					<img id="about_image"  src="<?php echo esc_url( get_theme_mod('about_image') );  ?>" alt="Img">
-        
-				</div>
-			</div><!-- .col-md-5 close -->
-		</div>
-	</div>
-</section>
-<section class="feature bg-2">
-  <div class="container">
-    <div class="row">
-      <div id="ideas" class="col-md-6 col-md-offset-6">
-        <h2 class="section-subtitle"><?php echo get_theme_mod('ideas_title'); ?></h2>
-        <div id="ideas_content"><?php echo get_theme_mod('ideas_content'); ?></div>
-        <span id="ideas_link"><a href="<?php echo get_theme_mod('ideas_url') ?>" class="btn btn-view-works"><?php echo get_theme_mod('ideas_button_text');  ?></a></span>
-      </div>
-    </div>
-  </div>
-</section>
+ <?php
+$template_parts = get_theme_mod( 'sortable_blocks', array( 'aboutus', 'ideas', 'services' ) );
 
-<!-- Service Start -->
-<section class="service">
-  <div class="container">
-    <div class="row">
-      <div class="section-title">
-        <h2 id="services_title"><?php echo get_theme_mod('services_title'); ?></h2>
-    
-        <div id="services_subheading"><?php echo get_theme_mod('services_subheading'); ?></div>
-      </div>
-    </div>
-    <div class="row ">
+if ( ! empty( $template_parts ) && is_array( $template_parts ) ) {
+  // Loop parts.
+  foreach ( $template_parts as $template_part ) {
+   get_template_part( 'template-parts/frontpage/airspace-'.$template_part );
+  }
+}
 
-      <?php
-         $services_repeater = get_theme_mod('services_repeater');
-         /*This returns a json so we have to decode it*/
-         $services_repeater_decoded = json_decode($services_repeater);
-         foreach($services_repeater_decoded as $repeater_item) :
-      ?>
-      <div class="col-sm-6 col-md-3">
-        <div class="service-item">
-          <?php echo $repeater_item->icon_value; ?>
-          <h4><?php echo $repeater_item->title; ?></h4>
-          <p><?php echo $repeater_item->text; ?></p>
-        </div>
-      </div>
-      <?php endforeach; ?>
-    </div>
-  </div>
-</section>
+  ?>
+
+
 <!-- Call to action Start -->
 
 <section class="call-to-action bg-1 section-sm overly">
